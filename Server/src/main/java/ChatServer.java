@@ -1,4 +1,6 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.time.LocalDateTime;
@@ -7,6 +9,7 @@ import java.util.ArrayList;
 public class ChatServer implements TCPConnectionListener {
 
     static Logger logger;
+
 
     public static void main(String[] args) {
 
@@ -19,7 +22,7 @@ public class ChatServer implements TCPConnectionListener {
     private ChatServer() {
         System.out.println("Server running...");
         logger.log("Server running " + LocalDateTime.now());
-        try (ServerSocket serverSocket = new ServerSocket(5050)) {
+        try (ServerSocket serverSocket = new ServerSocket(TCPConnection.setPort())) {
             while (true) {
                 try {
 
@@ -75,4 +78,7 @@ public class ChatServer implements TCPConnectionListener {
 
 
     }
+
 }
+
+

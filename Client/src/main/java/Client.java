@@ -12,7 +12,7 @@ public class Client extends JFrame implements ActionListener,TCPConnectionListen
 
 
     private static String IP_ADDR = "127.0.0.1";
-    private static final int PORT = 5050;
+    private static final int PORT = TCPConnection.setPort();
     private static final int WIDTH = 600;
     private static final int HEIGHT = 400;
 

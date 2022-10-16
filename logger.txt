@@ -30,3 +30,14 @@ Connection ready: 2022-10-15T22:11:16.666199
 USER: connection 2022-10-15T22:11:18.289075
 USER:  send massage'ewrgaeg' - 2022-10-15T22:11:21.648426
 USER:  send massage'aerhrht' - 2022-10-15T22:11:22.482086
+Connection exception: java.net.ConnectException: Connection refused: 2022-10-16T20:08:19.322544
+Server running 2022-10-16T20:08:34.159598
+Connection ready: 2022-10-16T20:08:47.225530
+USER: connection 2022-10-16T20:08:48.748908
+4534:  send massage'vdzv..' - 2022-10-16T20:08:56.526176
+4534:  send massage'zvzv' - 2022-10-16T20:08:57.566693
+4534:  send massage'zdvz' - 2022-10-16T20:08:58.116132
+4534:  send massage'zvzvzvd3' - 2022-10-16T20:09:00.293862
+4534:  send massage'zvzvdz' - 2022-10-16T20:09:01.209297
+4534:  send massage'zvzv' - 2022-10-16T20:09:02.021553
+USER disconnection: 2022-10-16T20:09:36.631971

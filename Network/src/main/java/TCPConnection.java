@@ -66,6 +66,21 @@ public class TCPConnection {
 
         }
     }
+    public static int setPort() {
+        int port = 0;
+        try (FileReader reader = new FileReader("settings.txt");
+             BufferedReader br = new BufferedReader(reader)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                port = Integer.parseInt(line);
+            }
+        } catch (IOException ignored) {
+
+        }
+        return port;
+
+    }
+
     @Override
     public String toString(){
         return "Connection" + socket.getInetAddress() + " : " + socket.getPort();
