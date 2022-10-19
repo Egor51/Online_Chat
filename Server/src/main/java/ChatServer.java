@@ -1,6 +1,4 @@
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.time.LocalDateTime;
@@ -9,6 +7,8 @@ import java.util.ArrayList;
 public class ChatServer implements TCPConnectionListener {
 
     static Logger logger;
+
+    private  String name = ClientConsole.setNickName();
 
 
     public static void main(String[] args) {
@@ -22,6 +22,7 @@ public class ChatServer implements TCPConnectionListener {
     private ChatServer() {
         System.out.println("Server running...");
         logger.log("Server running " + LocalDateTime.now());
+
         try (ServerSocket serverSocket = new ServerSocket(TCPConnection.setPort())) {
             while (true) {
                 try {
@@ -35,7 +36,7 @@ public class ChatServer implements TCPConnectionListener {
                 }
             }
         } catch (IOException e) {
-            logger.log("Server stop");
+            logger.log("TCPConnection exception:" + e +": "+ LocalDateTime.now());
         }
     }
 
@@ -43,15 +44,16 @@ public class ChatServer implements TCPConnectionListener {
     @Override
     public synchronized void onConnectionReady(TCPConnection tcpConnection) {
         connections.add(tcpConnection);
-        sendToAll(Client.fieldNickName.getText() + "connection" + tcpConnection);
-        logger.log(Client.fieldNickName.getText() + ": " + "connection " + LocalDateTime.now());
+        sendToAll(name + ": " + " connection");
+        logger.log(name + ": " + " connection " + LocalDateTime.now()+ tcpConnection);
     }
 
     @Override
     public synchronized void onDisconnect(TCPConnection tcpConnection) {
         connections.remove(tcpConnection);
-        sendToAll(Client.fieldNickName.getText() + " disconnection: " + tcpConnection);
-        logger.log(Client.fieldNickName.getText() + " disconnection: " + LocalDateTime.now());
+      //  sendToAll(" disconnection: " + tcpConnection);
+        sendToAll(name + ": " + " disconnection");
+        logger.log(name + " disconnection: " + ": " + LocalDateTime.now() + tcpConnection);
 
 
     }
@@ -75,10 +77,9 @@ public class ChatServer implements TCPConnectionListener {
                 connection.sendString(value);
             }
         }
-
-
     }
-
 }
+
+
 
 
